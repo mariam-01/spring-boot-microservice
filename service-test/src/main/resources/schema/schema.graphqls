@@ -1,0 +1,44 @@
+input OrderRequest{
+    orderLineItemsListRequest: [OrderLineItemsRequest]
+
+}
+
+type Order {
+    id: ID!
+    orderNumber: String!
+    orderLineItemsList: [OrderLineItems!]!
+
+}
+type OrderResponse {
+    id: ID!
+    orderNumber: String!
+    orderLineItemsListResponse: [OrderLineItems]
+
+}
+
+input OrderLineItemsRequest {
+    productId: Int!
+    price: Float!
+    quantity: Int!
+}
+
+
+type OrderLineItems {
+    id: ID!
+    productId: Int!
+    price: Float!
+    quantity: Int!
+}
+
+type OrderLineItemsResponse {
+    id: ID!
+    productId: Int!
+    price: Float!
+    quantity: Int!
+}
+
+
+type Mutation {
+    placeOrder(orderRequest : OrderRequest) : String
+
+}

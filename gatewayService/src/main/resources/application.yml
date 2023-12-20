@@ -1,0 +1,23 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: http://localhost:8096/order-service
+          predicates:
+            - Path=/api/order
+
+        - id: inventory-service
+          uri: http://localhost:8090/inventory-service
+          predicates:
+            - Path=/api/inventory
+
+        - id: security-service
+          uri: http://localhost:8094/security-service
+          predicates:
+            - Path=/api/security

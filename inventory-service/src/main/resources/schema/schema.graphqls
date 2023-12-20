@@ -1,0 +1,55 @@
+
+
+type Query {
+    getAllProducts: [ProductResponse]
+    selectProductByID(id : Int) : ProductResponse
+
+    isInStock(skuCode: [String]): [InventoryResponse]
+
+}
+type Mutation {
+    addProduct(productRequest : ProductRequest) : String
+    updateProduct(id : Int, productRequest : ProductRequest) : String
+    updateProductAndReturnIt(id : Int, productRequest : ProductRequest) : ProductResponse
+    updateSpecifcAtrributeInProduct(id : Int, productRequest : ProductRequest) : ProductResponse
+    deleteProduct(id : Int) : String
+}
+
+input ProductRequest{
+    name: String
+    description: String
+    price: Float
+    quantity: Int
+}
+
+type Product {
+    id: ID!
+    name: String!
+    description: String
+    price: Float!
+    quantity: Int
+
+}
+
+type ProductResponse {
+    id: ID!
+    name: String!
+    description: String
+    price: Float!
+    quantity: Int
+
+}
+
+type Inventory {
+    id: ID!
+    skuCode: String!
+    quantity: Int
+
+}
+type InventoryResponse {
+    id: ID!
+    skuCode: String!
+    isInStock: Boolean
+}
+
+
