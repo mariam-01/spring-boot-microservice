@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@FeignClient(name = "INVENTORY-SERVICE")
+@FeignClient(
+        name = "INVENTORY-SERVICE"
+)
 public interface InventoryService {
 
 

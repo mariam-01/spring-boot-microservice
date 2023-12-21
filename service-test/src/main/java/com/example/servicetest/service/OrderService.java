@@ -94,8 +94,6 @@ public class OrderService {
             Integer orderQuantity = entry.getValue();
 
             ProductResponse product = inventoryService.selectProductByID(productId).orElse(null);
-            System.out.println("product : "+product);
-
             if (product == null || product.getQuantity() < orderQuantity) {
                 // If the product is not found or has insufficient quantity, return false
                 return false;
